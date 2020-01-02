@@ -1,0 +1,19 @@
+<div>
+    <div class="header">
+        <span class="title">RSOPlayer</span>
+    </div>
+
+    <div class="song-container">
+        <span id="list-title">Music</span>
+        <div class="list">
+            <div *ngFor="let song of songs" class="song-card" (click)="openSong(song.id)">
+                <img *ngIf="!!song.imageUrl else default" [src]="song.imageUrl" class="song-cover">
+                <ng-template #default>
+                    <img src="../../assets/cover.jpg" class="song-cover">
+                </ng-template>
+                <span class="song-title">{{song.title}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
