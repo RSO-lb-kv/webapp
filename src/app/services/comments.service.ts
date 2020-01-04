@@ -21,4 +21,8 @@ export class CommentsService {
   createSubcomment(data) {
     return this.http.post<any>(`${URI}/comment`, data);
   }
+
+  createComment(data) {
+    return this.http.post<any>(`${URI}/comment/song`, data);
+  }
 }

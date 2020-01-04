@@ -19,3 +19,21 @@ body {
     font-family: "Raleway Medium";
     src: url('./assets/Raleway-Medium.ttf') format("truetype");
 }
+
+.rso-btn {
+    border: 0px;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-family: 'Raleway Medium';
+    
+    &.blue-btn {
+        background-color: #4893fe;
+    }
+
+    &.grey-btn {
+        background-color: grey;
+    }
+
+}

@@ -22,26 +22,8 @@
     }
     
     .new-comment {
-        background-color: #4893fe47;
+        background-color: #cccccc;
         padding: 10px;
         border-radius: 5px;
-    }
-
-    .rso-btn {
-        border: 0px;
-        border-radius: 3px;
-        color: white;
-        padding: 5px 10px;
-        font-size: 12px;
-        font-family: 'Raleway Medium';
-        
-        &.blue-btn {
-            background-color: #4893fe;
-        }
-    
-        &.grey-btn {
-            background-color: grey;
-        }
-
     }
 }
