@@ -27,4 +27,8 @@ export class ListComponent implements OnInit {
     this.router.navigate(['song', id]);
   }
 
+  openAddSong() {
+    this.router.navigate(['new']);
+  }
+
 }

@@ -30,10 +30,18 @@ body {
     
     &.blue-btn {
         background-color: #4893fe;
+
+        &:hover {
+            background-color: #256dd4;
+        }
     }
 
     &.grey-btn {
         background-color: grey;
+
+        &:hover {
+            background-color: #616161;
+        }
     }
 
 }

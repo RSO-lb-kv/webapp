@@ -1,0 +1,39 @@
+<div class="header">
+    <span class="title" (click)="home()">RSOPlayer</span>
+</div>
+
+<div class="center-container">
+    <div style="width: 40vw;">
+        <span class="section-title">New song</span>
+    </div>
+
+    <div class="song-div" [formGroup]="songForm">
+        <input style="display: none" type="file" (change)="uploadImage($event)" accept="image/*" #fileInput>
+        <img class="cover-image" [src]="!!imageUrl ? imageUrl : '../../assets/placeholder.png'">
+        <div *ngIf="imageUrl">
+            <button class="rso-btn grey-btn" style="margin-right: 10px;" (click)="removeImage()">Remove image</button>
+            <button class="rso-btn blue-btn" (click)="fileInput.click()">Change image</button>
+        </div>
+        <button *ngIf="!imageUrl" class="rso-btn blue-btn" (click)="fileInput.click()">Set image</button>
+
+        <div class="form-group row mr-0 ml-0" style="width: 300px;">
+            <label class="col-form-label small-text d-inline-block" style="margin-right:10px;">Title: </label>
+            <input type="text" class="form-control" formControlName="title"
+                [class.is-invalid]="title.invalid && title.touched" />
+        </div>
+        <div class="form-group row mr-0 ml-0" style="width: 300px;">
+            <label class="col-form-label small-text d-inline-block" style="margin-right:10px;">Author:
+            </label>
+            <input type="text" class="form-control" formControlName="createdBy"
+                [class.is-invalid]="createdBy.invalid && createdBy.touched" />
+        </div>
+        <div class="form-group row mr-0 ml-0" style="width: 300px;">
+            <label class="col-form-label small-text">Description: </label>
+            <textarea class="form-control comment-ta" formControlName="description"
+                [class.is-invalid]="description.invalid && description.touched"></textarea>
+        </div>
+
+        <span class="warning" [class.visible]="formInvalid">Not all required fields are filled.</span>
+        <button type="button" class="rso-btn blue-btn" (click)="saveSong()">Save</button>
+    </div>
+</div>

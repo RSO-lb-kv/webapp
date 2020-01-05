@@ -13,6 +13,7 @@ import { Sec2minPipe } from './sec2min.pipe';
 import { SeekComponent } from './seek/seek.component';
 import { SongCommentComponent } from './song-comment/song-comment.component';
 import { SongComponent } from './song/song.component';
+import { AddSongComponent } from './add-song/add-song.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SongComponent } from './song/song.component';
     SongComponent,
     SongCommentComponent,
     SeekComponent,
-    Sec2minPipe
+    Sec2minPipe,
+    AddSongComponent
   ],
   imports: [
     BrowserModule,

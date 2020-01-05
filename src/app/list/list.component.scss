@@ -1,5 +1,8 @@
 .header {
-    padding: 10px;
+    margin: 10px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .title {
         font-size: 30px;
@@ -32,11 +35,13 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background-color: rgb(241, 241, 241);
+            background-color: #4792fe;
+            color:white;
             width: 200px;
             height: 220px;
             border-radius: 10px;
             margin: 10px;
+            cursor: pointer;
 
             .song-cover {
                 height: 150px;
@@ -51,7 +56,7 @@
             }
 
             &:hover {
-                background-color: #4893fe3b;
+                background-color: #256dd4;
             }
         }
     }

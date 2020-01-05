@@ -1,0 +1,60 @@
+.header {
+    margin: 10px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+        font-size: 30px;
+        color: #4894fe;
+        font-family: 'Permanent Marker';
+        cursor: pointer;
+    }
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .section-title {
+        font-size: 20px;
+        font-family: 'Permanent Marker';
+    }
+    
+    .song-div {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.2);
+        height: 70vh;
+        width: 40vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cover-image {
+            margin-top: 10px;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .col-form-label {
+            font-family: 'Raleway Regular';
+            font-size: 14px;
+        }
+
+        .warning {
+            color: red; 
+            font-family: 'Raleway Regular';
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0;
+
+            &.visible {
+                opacity: 1;
+            }
+        }
+    }
+}
