@@ -1,6 +1,6 @@
 <div *ngIf="pageLoaded" #mainContainer>
     <div class="header">
-        <span class="title">RSOPlayer</span>
+        <span class="title" (click)="home()">RSOPlayer</span>
     </div>
 
     <div class="col-12 d-flex justify-content-center">
@@ -8,9 +8,23 @@
             <div class="song-div">
                 <img src="../../assets/cover.jpg" class="song-cover">
                 <span class="song-title">{{song.title}}</span>
+                <span class="small-text">BMP: {{song.bpm || 'unknown'}}</span>
                 <span class="small-text">Uploaded by: {{song.uploadedBy}}</span>
                 <span class="small-text">{{song.description}}</span>
                 <app-seek></app-seek>
+            </div>
+
+            <div class="rating-div">
+                <div class="d-inline-block" style="margin-right: 20px;" (click)="toogleRating('LIKE')">
+                    <img [src]="ratingSelected.like ? '../../assets/thumbs-up-green.png' : '../../assets/thumbs-up-grey.png'"
+                        class="rating-icon">
+                    <span class="rating-text">{{rating.likes}}</span>
+                </div>
+                <div class="d-inline-block" (click)="toogleRating('DISLIKE')">
+                    <img [src]="ratingSelected.dislike ? '../../assets/thumbs-down-green.png' : '../../assets/thumbs-down-grey.png'"
+                        class="rating-icon">
+                    <span class="rating-text">{{rating.dislikes}}</span>
+                </div>
             </div>
 
             <div class="comments-div">

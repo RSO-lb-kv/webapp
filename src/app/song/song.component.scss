@@ -5,6 +5,7 @@
         font-size: 30px;
         color: rgb(72, 148, 254);
         font-family: 'Permanent Marker';
+        cursor: pointer;
     }
 }
 
@@ -42,6 +43,20 @@
             font-size: 14px;
             color: white;
             font-family: 'Raleway Regular';
+        }
+    }
+
+    .rating-div {
+        margin-top: 10px;
+        width: 35vw;
+
+        .rating-icon {
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .rating-text {
+            font-size: 14px;
         }
     }
 

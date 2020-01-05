@@ -23,19 +23,20 @@ export class CatalogService {
       );
   }
 
-  getSong(id: string) {
-    return this.apollo.watchQuery<any>({
+  getSong(id: number) {
+    return this.apollo.query<any>({
       query: gql`{
         song(id: ${id}) {
+          id,
           title,
           description,
           uploadedBy,
           uri,
+          bpm,
+          imageUrl,
           created
         }
       }`
-    }).valueChanges.pipe(
-      map(res => res.data && res.data.song)
-    );
+    }).pipe(map(res => res.data && res.data.song))
   }
 }
