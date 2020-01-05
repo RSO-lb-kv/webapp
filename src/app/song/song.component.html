@@ -7,7 +7,7 @@
     <div class="col-12 d-flex justify-content-center">
         <div class="center-container col-8">
             <div class="song-div">
-                <img src="../../assets/cover.jpg" class="song-cover">
+                <img [src]="!!song.imageUrl ? song.imageUrl : '../../assets/placeholder.png'" class="song-cover">
                 <span class="song-title">{{song.title}}</span>
                 <span class="small-text">BMP: {{song.bpm || 'unknown'}}</span>
                 <span class="small-text">Uploaded by: {{song.uploadedBy}}</span>
