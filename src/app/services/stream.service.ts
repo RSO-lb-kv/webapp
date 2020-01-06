@@ -43,6 +43,10 @@ export class StreamService {
     this.audio.currentTime = seconds;
   }
 
+  setVolume(value: number) {
+    this.audio.volume = value;
+  }
+
   private streamObservable(url): Observable<Event> {
     return new Observable<Event>(observer => {
       this.audio.src = url;
@@ -72,6 +76,7 @@ export class StreamService {
 
   private updateState(event: Event): void {
     const state = this.state$.value;
+    state.volume = this.audio.volume;
     switch (event.type) {
       case "canplay":
         state.duration = this.audio.duration;

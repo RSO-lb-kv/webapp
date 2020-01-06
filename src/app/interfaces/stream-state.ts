@@ -2,6 +2,7 @@ export class StreamState {
   playing: boolean;
   duration: number;
   currentTime: number;
+  volume: number;
   canplay: boolean;
   error: boolean;
 
