@@ -50,8 +50,13 @@ export class StreamService {
   private streamObservable(url): Observable<Event> {
     return new Observable<Event>(observer => {
       this.audio.src = url;
+      this.audio.autoplay = true;
       this.audio.load();
-      this.audio.play();
+      this.audio.play().catch(err => {
+        const state = this.state$.value;
+        state.autoplayFailed = true;
+        this.state$.next(state);
+      });
 
       const handler = (event: Event) => {
         this.updateState(event);

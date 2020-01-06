@@ -4,6 +4,7 @@ export class StreamState {
   currentTime: number;
   volume: number;
   canplay: boolean;
+  autoplayFailed: boolean;
   error: boolean;
 
   reset() {

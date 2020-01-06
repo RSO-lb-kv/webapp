@@ -90,9 +90,11 @@ export class SeekComponent implements OnInit, OnDestroy {
   }
 
   domLoaded() {
-    this.ngZone.runOutsideAngular(() =>
-      this.animationItem.playSegments([29, 30], true)
-    );
+    this.ngZone.runOutsideAngular(() => {
+      if (!this.state.autoplayFailed) {
+        this.animationItem.playSegments([29, 30], true);
+      }
+    });
   }
 
   toggleplay() {
