@@ -1,39 +1,139 @@
 <div class="header">
-    <span class="title" (click)="home()">RSOPlayer</span>
+  <span class="title" (click)="home()">RSOPlayer</span>
 </div>
 
 <div class="center-container">
-    <div style="width: 40vw;">
-        <span class="section-title">New song</span>
+  <div style="width: 40vw;">
+    <span class="section-title">New song</span>
+  </div>
+
+  <div
+    class="song-div"
+    [formGroup]="songForm"
+    *ngIf="!afterUpload; else afterUploadMsg"
+  >
+    <input
+      style="display: none"
+      type="file"
+      (change)="uploadImage($event)"
+      accept="image/*"
+      #imageInput
+    />
+    <input
+      style="display: none"
+      type="file"
+      (change)="uploadSong($event)"
+      accept="audio/*"
+      #songInput
+    />
+    <img
+      class="cover-image"
+      [src]="!!imageUrl ? imageUrl : '../../assets/placeholder.png'"
+    />
+    <div *ngIf="imageUrl">
+      <button
+        class="rso-btn grey-btn"
+        style="margin-right: 10px;"
+        (click)="removeImage()"
+      >
+        Remove image
+      </button>
+      <button class="rso-btn blue-btn" (click)="imageInput.click()">
+        Change image
+      </button>
+    </div>
+    <button
+      *ngIf="!imageUrl"
+      class="rso-btn blue-btn"
+      (click)="imageInput.click()"
+    >
+      Set image
+    </button>
+
+    <div class="selected-audio-file">
+      {{ audioFile ? audioFile.name : "No file selected" }}
     </div>
 
-    <div class="song-div" [formGroup]="songForm">
-        <input style="display: none" type="file" (change)="uploadImage($event)" accept="image/*" #fileInput>
-        <img class="cover-image" [src]="!!imageUrl ? imageUrl : '../../assets/placeholder.png'">
-        <div *ngIf="imageUrl">
-            <button class="rso-btn grey-btn" style="margin-right: 10px;" (click)="removeImage()">Remove image</button>
-            <button class="rso-btn blue-btn" (click)="fileInput.click()">Change image</button>
-        </div>
-        <button *ngIf="!imageUrl" class="rso-btn blue-btn" (click)="fileInput.click()">Set image</button>
+    <button class="rso-btn blue-btn" (click)="songInput.click()">
+      {{ audioFile ? "Change audio file" : "Add audio file" }}
+    </button>
 
-        <div class="form-group row mr-0 ml-0" style="width: 300px;">
-            <label class="col-form-label small-text d-inline-block" style="margin-right:10px;">Title: </label>
-            <input type="text" class="form-control" formControlName="title"
-                [class.is-invalid]="title.invalid && title.touched" />
-        </div>
-        <div class="form-group row mr-0 ml-0" style="width: 300px;">
-            <label class="col-form-label small-text d-inline-block" style="margin-right:10px;">Author:
-            </label>
-            <input type="text" class="form-control" formControlName="createdBy"
-                [class.is-invalid]="createdBy.invalid && createdBy.touched" />
-        </div>
-        <div class="form-group row mr-0 ml-0" style="width: 300px;">
-            <label class="col-form-label small-text">Description: </label>
-            <textarea class="form-control comment-ta" formControlName="description"
-                [class.is-invalid]="description.invalid && description.touched"></textarea>
-        </div>
-
-        <span class="warning" [class.visible]="formInvalid">Not all required fields are filled.</span>
-        <button type="button" class="rso-btn blue-btn" (click)="saveSong()">Save</button>
+    <div class="form-group row mr-0 ml-0" style="width: 300px;">
+      <label
+        class="col-form-label small-text d-inline-block"
+        style="margin-right:10px;"
+        >Title:
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="title"
+        [class.is-invalid]="title.invalid && title.touched"
+      />
     </div>
+    <div class="form-group row mr-0 ml-0" style="width: 300px;">
+      <label
+        class="col-form-label small-text d-inline-block"
+        style="margin-right:10px;"
+        >Uploaded by:
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="createdBy"
+        [class.is-invalid]="createdBy.invalid && createdBy.touched"
+      />
+    </div>
+    <div class="form-group row mr-0 ml-0" style="width: 300px;">
+      <label class="col-form-label small-text">Description: </label>
+      <textarea
+        class="form-control comment-ta"
+        formControlName="description"
+        [class.is-invalid]="description.invalid && description.touched"
+      ></textarea>
+    </div>
+
+    <span class="warning" [class.visible]="formInvalid"
+      >Not all required fields are filled.</span
+    >
+    <button
+      type="button"
+      class="rso-btn blue-btn"
+      [disabled]="uploading"
+      (click)="saveSong()"
+    >
+      Save
+    </button>
+
+    <div class="lds-facebook" *ngIf="uploading">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </div>
+
+<ng-template #afterUploadMsg>
+  <div class="song-div after-upload">
+    Song was successfully uploaded. The audio file is now being processed. so it
+    may take some time for you to be able to see the song on the home page.
+
+    <button
+      type="button"
+      class="rso-btn blue-btn"
+      style="margin-top: 10px;"
+      (click)="afterUpload = false"
+    >
+      Upload another song
+    </button>
+
+    <button
+      type="button"
+      class="rso-btn blue-btn"
+      style="margin-top: 10px;"
+      (click)="home()"
+    >
+      Go to home page
+    </button>
+  </div>
+</ng-template>

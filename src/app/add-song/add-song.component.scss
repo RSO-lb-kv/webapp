@@ -1,60 +1,107 @@
 .header {
-    margin: 10px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    .title {
-        font-size: 30px;
-        color: #4894fe;
-        font-family: 'Permanent Marker';
-        cursor: pointer;
-    }
+  .title {
+    font-size: 30px;
+    color: #4894fe;
+    font-family: "Permanent Marker";
+    cursor: pointer;
+  }
 }
 
 .center-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .section-title {
+    font-size: 20px;
+    font-family: "Permanent Marker";
+  }
+
+  .song-div {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.2);
+    height: 70vh;
+    width: 40vw;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
-    .section-title {
-        font-size: 20px;
-        font-family: 'Permanent Marker';
+    &.after-upload {
+      padding: 40px;
+      justify-content: center;
     }
-    
-    .song-div {
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 20px;
-        box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.2);
-        height: 70vh;
-        width: 40vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        .cover-image {
-            margin-top: 10px;
-            height: 200px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .col-form-label {
-            font-family: 'Raleway Regular';
-            font-size: 14px;
-        }
-
-        .warning {
-            color: red; 
-            font-family: 'Raleway Regular';
-            font-size: 14px;
-            margin-bottom: 10px;
-            opacity: 0;
-
-            &.visible {
-                opacity: 1;
-            }
-        }
+    .cover-image {
+      margin-top: 10px;
+      height: 200px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
+
+    .selected-audio-file {
+      margin-top: 10px;
+    }
+
+    .col-form-label {
+      font-family: "Raleway Regular";
+      font-size: 14px;
+    }
+
+    .warning {
+      color: red;
+      font-family: "Raleway Regular";
+      font-size: 14px;
+      margin-bottom: 10px;
+      opacity: 0;
+
+      &.visible {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 63px;
+  height: 52px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 12px;
+  background: #4893fe;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 25px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 42px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 44px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 22px;
+  }
 }
