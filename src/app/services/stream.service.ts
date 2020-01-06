@@ -52,7 +52,7 @@ export class StreamService {
       this.audio.src = url;
       this.audio.autoplay = true;
       this.audio.load();
-      this.audio.play().catch(err => {
+      this.audio.play().catch(() => {
         const state = this.state$.value;
         state.autoplayFailed = true;
         this.state$.next(state);
