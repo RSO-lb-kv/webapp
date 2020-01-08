@@ -58,6 +58,7 @@ export class SongCommentComponent implements OnInit {
       text: this.commentForm.get('text').value
     }).subscribe(
       res => {
+        this.ngOnInit();
         this.comment.writing = false;
         this.comment.author = res.author;
         this.comment.commentId = res.commentId;

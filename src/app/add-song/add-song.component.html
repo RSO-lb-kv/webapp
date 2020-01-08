@@ -19,7 +19,7 @@
       Set image
     </button>
 
-    <div class="selected-audio-file">
+    <div class="selected-audio-file" [ngStyle]="songForm.touched && !audioFile ? {'color':'red'} : {}">
       {{ audioFile ? audioFile.name : "No file selected" }}
     </div>
 

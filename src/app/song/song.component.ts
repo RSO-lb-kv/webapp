@@ -59,6 +59,10 @@ export class SongComponent implements OnInit, OnDestroy {
       this.pageLoaded = true;
     })
 
+    this.resetForm();
+  }
+
+  private resetForm() {
     this.commentForm = this.formBuilder.group({
       author: ["", Validators.required],
       text: ["", Validators.required]
@@ -96,6 +100,7 @@ export class SongComponent implements OnInit, OnDestroy {
       text: this.commentForm.get('text').value
     }).subscribe(
       res => {
+        this.resetForm();
         this.comments.unshift(res);
         this.showNewComment = false;
       }
