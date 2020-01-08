@@ -14,6 +14,7 @@ import { SeekComponent } from './seek/seek.component';
 import { SongCommentComponent } from './song-comment/song-comment.component';
 import { SongComponent } from './song/song.component';
 import { AddSongComponent } from './add-song/add-song.component';
+import { LoadedDirective } from './directives/loaded.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddSongComponent } from './add-song/add-song.component';
     SongCommentComponent,
     SeekComponent,
     Sec2minPipe,
-    AddSongComponent
+    AddSongComponent,
+    LoadedDirective
   ],
   imports: [
     BrowserModule,
