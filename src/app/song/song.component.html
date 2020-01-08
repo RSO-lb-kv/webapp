@@ -1,18 +1,15 @@
 <div *ngIf="pageLoaded" #mainContainer>
   <div class="header">
     <span class="title" (click)="home()">RSOPlayer</span>
-    <button type="button" class="rso-btn blue-btn">New song</button>
+    <button type="button" (click)="newSong()" class="rso-btn blue-btn">New song</button>
   </div>
 
   <div class="col-12 d-flex justify-content-center">
     <div class="center-container col-8">
       <div class="song-div">
-        <img
-          [src]="
+        <img [src]="
             !!song.imageUrl ? song.imageUrl : '../../assets/placeholder.png'
-          "
-          class="song-cover"
-        />
+          " class="song-cover" />
         <span class="song-title">{{ song.title }}</span>
         <span class="small-text">BPM: {{ song.bpm || "unknown" }}</span>
         <span class="small-text">Uploaded by: {{ song.uploadedBy }}</span>
@@ -21,89 +18,51 @@
       </div>
 
       <div class="rating-div">
-        <div
-          class="d-inline-block"
-          style="margin-right: 20px;"
-          (click)="toogleRating('LIKE')"
-        >
-          <img
-            [src]="
+        <div class="d-inline-block" style="margin-right: 20px;" (click)="toogleRating('LIKE')">
+          <img [src]="
               ratingSelected.like
                 ? '../../assets/thumbs-up-green.png'
                 : '../../assets/thumbs-up-grey.png'
-            "
-            class="rating-icon"
-          />
+            " class="rating-icon" />
           <span class="rating-text">{{ rating.likes }}</span>
         </div>
         <div class="d-inline-block" (click)="toogleRating('DISLIKE')">
-          <img
-            [src]="
+          <img [src]="
               ratingSelected.dislike
                 ? '../../assets/thumbs-down-green.png'
                 : '../../assets/thumbs-down-grey.png'
-            "
-            class="rating-icon"
-          />
+            " class="rating-icon" />
           <span class="rating-text">{{ rating.dislikes }}</span>
         </div>
       </div>
 
       <div class="comments-div">
-        <div
-          class="d-flex justify-content-between"
-          style="margin-bottom: 10px;"
-        >
+        <div class="d-flex justify-content-between" style="margin-bottom: 10px;">
           <span class="title">Comments</span>
-          <button
-            type="button"
-            class="rso-btn blue-btn"
-            (click)="addNewComment()"
-          >
+          <button type="button" class="rso-btn blue-btn" (click)="addNewComment()">
             New comment
           </button>
         </div>
-        <app-song-comment
-          *ngFor="let comment of comments"
-          [comment]="comment.comment"
-          [songCommentId]="comment.songCommentId"
-        >
+        <app-song-comment *ngFor="let comment of comments" [comment]="comment.comment"
+          [songCommentId]="comment.songCommentId">
         </app-song-comment>
       </div>
 
       <div class="new-comment" *ngIf="showNewComment" [formGroup]="commentForm">
         <div class="form-group row mr-0 ml-0">
-          <label
-            class="col-form-label small-text d-inline-block"
-            style="margin-right:5px;"
-            >Author:
+          <label class="col-form-label small-text d-inline-block" style="margin-right:5px;">Author:
           </label>
-          <input
-            type="text"
-            class="form-control col-6"
-            formControlName="author"
-          />
+          <input type="text" class="form-control col-6" formControlName="author" />
         </div>
         <div class="form-group row mr-0 ml-0">
           <label class="col-form-label small-text">Your comment: </label>
-          <textarea
-            class="form-control comment-ta"
-            formControlName="text"
-          ></textarea>
+          <textarea class="form-control comment-ta" formControlName="text"></textarea>
         </div>
         <div class="d-flex justify-content-between">
-          <button
-            type="button"
-            class="rso-btn grey-btn"
-            (click)="cancelNewComment()"
-          >
+          <button type="button" class="rso-btn grey-btn" (click)="cancelNewComment()">
             Cancel
           </button>
-          <button
-            type="button"
-            class="rso-btn blue-btn"
-            (click)="sendNewComment()"
-          >
+          <button type="button" class="rso-btn blue-btn" (click)="sendNewComment()">
             Send
           </button>
         </div>

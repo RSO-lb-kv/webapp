@@ -140,4 +140,8 @@ export class SongComponent implements OnInit, OnDestroy {
     this.router.navigate(['/home']);
   }
 
+  newSong() {
+    this.router.navigate(['/new'])
+  }
+
 }
